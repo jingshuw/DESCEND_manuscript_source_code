@@ -1,0 +1,21 @@
+File_name,Reference,Protocol,UMIs,Cells / Samples,Accession ID,Dilution (1:x),Volume (nL),Description of data
+mars_jaitin,Jaitin et al 2014,MARS-Seq 3' tags,"Yes
+4 - 8 bp",4560,GSE54006 SRP035326,50000,10,A large number of heterogenous dendritic (CD11c+) cells from mouse spleen.
+zeisel,Zeisel et al 2015,STRT-Seq (C1) 5’ tags,"Yes
+6 bp",3005,GSE60361 SRP045452,20000,9,Large number of heterogeneous cells from mouse cortex and hippocampus
+klein,Klein et al 2015,InDrop 3' tags,"Yes
+6 bp",953,GSE65525 SRP053052 SRR1784317,5000,1,Individial droplets with purified human total RNA and ERCC spike-ins
+dropseq_macosko,Macosko et al 2015,DropSeq 3' tags,"Yes
+8 bp",84,GSE63473 SRP056001 SRR1873278,623,1,Individual droplets loaded with ERCC spike-ins
+cel2_hashimshony,Hashimshony et al 2016,CEL-Seq2 3' tags,"Yes
+6 bp",20,GSE78779 SRP070989,1000000,1000,Mouse dendritic cells
+cel2_C1_hashimshony,Hashimshony et al 2016,CEL-Seq2 (C1) 3' tags,"Yes
+6 bp",96,GSE78779 SRP070989,1000000,1000,Mouse fibroblast cells
+tung,Tung et al 2017,STRT-Seq (C1) 5’ tags,"Yes
+6 bp",564,,50000,9,
+pbmc_10x,Zheng et al 2017,GemCode 3' tags,"Yes
+10 bp",1015,SRP073767,10,1.1,Individual emulsiona loaded with ERCC spike-ins
+svensson1X,Svensson et al 2017,GemCode 3' tags,"Yes
+10 bp",2000,,4,1.1,Individual emulsiona loaded with ERCC spike-ins
+svensson2X,Svensson et al 2017,GemCode 3' tags,"Yes
+10 bp",2000,,8,1.1,Individual emulsiona loaded with ERCC spike-ins
