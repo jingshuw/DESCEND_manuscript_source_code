@@ -2,6 +2,22 @@ source("functions_all.R")
 library(descend)
 
 ## need to specify DATAFILEPATH, trueMol and alpha for the code to run, see the file functions_all.R
+## get the trueMol and alpha of Zeisel data
+setwd("../spike_in_analysis")
+source("functions_ercc.R")
+library(Hmisc)
+
+library(grid)
+library(gridExtra)
+
+ercc.info <- read.table("ercc-info.txt", header = T, sep = "\t")
+data.info <- read.csv("ERCC_datasets.csv", stringsAsFactors = F)
+ercc.data <- getData(2)
+alpha <- ercc.data$alpha
+trueMol <- ercc.data$trueMol
+setwd("../zeisel_data_analysis/")
+
+#DATAFILEPATH <- "GSE60361_C1-3005-Expression.txt"
 data <- GetY(DATAFILEPATH, trueMol, alpha)
 alpha <- data$alpha
 log.lib.size <- log(colSums(data$Y))

@@ -6,10 +6,10 @@ GetY <- function(data.file = "GSE60361_C1-3005-Expression.txt",
 
   require(data.table)
   genestab<- fread(data.file, sep="\t", header=TRUE)
-  headers<- read.table(paste(base, "zeisel_header_only.txt", 
+  headers<- read.table(paste("zeisel_header_only.txt", 
                              sep = ""), sep="\t", header=TRUE)
   level1 <- paste(t(headers[8,-1]))
-  gnames <- genestab[,1]
+  gnames <- as.vector(genestab$cell_id)
   Y <- as.matrix(genestab[,-1])
   rownames(Y) <- gnames
 

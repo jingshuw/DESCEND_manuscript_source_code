@@ -6,7 +6,7 @@ fish <- read.table("fishSubset.txt", header = T)
 
 
 ###################### load Dropseq data ##############################3 
-### UMI counts can be downloaded from GSE99330. The Dropseq data for the FISH genes are included
+### the CPM counts can be downloaded from GSE99330. The Dropseq data for the FISH genes are included
 ### folder. One can ignore this section if they are only interested in the data of these genes
 library(data.table)
 ## the name of the downloaded txt file of the Dropseq data
@@ -23,8 +23,6 @@ dropseq.fish <- dropseq.counts[dropseq.counts$Gene %in% colnames(fish), ]
 rm(dropseq.counts)
 for (i in 1:5)
   gc()
-
-dropseq.fish <- as.data.frame(dropseq)
 
 ####################################################################
 
@@ -81,8 +79,9 @@ do.call(temp.fun, p.list[idx])
 
 
 
-### Figure cell size effect on active fraction
+### Figure cell size effect on nonzero fraction
 library(Hmisc)
+fish <- read.table("fishSubset.txt", header = T)
 fish.coef <- sapply(1:26, function(i) {
   y <- fish[fish.idx, i] != 0
   temp <- glm(y~log(fish$GAPDH[fish.idx]), family = binomial(link="logit"))
@@ -91,7 +90,7 @@ fish.coef <- sapply(1:26, function(i) {
 p0 <- colMeans(fish[fish.idx, ] == 0, na.rm = T)
 rm.idx <- c(4, 11, 19)
 ylim <- range(c(fish.coef[1, -rm.idx] - fish.coef[2, -rm.idx], fish.coef[1, -rm.idx] + fish.coef[2, -rm.idx]))
-### Figure cell size effect on burst intensity
+### Figure cell size effect on nonzero mean
 require(gamlss)
 require(gamlss.tr)
 require(Hmisc)
@@ -129,7 +128,6 @@ errbar(log(fish.mean[-rm.idx]), fish.coef.size[1, -rm.idx],
        fish.coef.size[1, -rm.idx] + fish.coef.size[2, -rm.idx],
        fish.coef.size[1, -rm.idx] - fish.coef.size[2, -rm.idx], add = T, pch = ".")
 abline(h = 1, col = "blue", lty = 2)
-dev.off()
 
 
 

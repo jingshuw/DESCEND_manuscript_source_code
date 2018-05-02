@@ -1,5 +1,5 @@
 bio.g <- readRDS("data.rds")
-source("fun.R")
+source("functions.R")
 lib.size <- colSums(bio.g)
 
 library(descend)
@@ -17,6 +17,7 @@ outfile <- paste("verbose_log_", as.numeric(Sys.time()), ".txt", sep = "")
 cl <- makeCluster(10, outfile = outfile)
 
 ############### Differential Testing Between Batches ###########################################
+set.seed(10)
 select.idx <- unlist(lapply(levels(labels), function(ll) {
                                   n <- sum(labels == ll)
                                   idx <- rep(0, n)
@@ -64,13 +65,6 @@ model <- list(scaling.consts = lib.size.group,
 test.wi <- deTest(result.wi, unique(label.group), Y,
                   label.group, N.genes.null = nrow(Y) * 5, params = model, cl = cl)
 
-
-result.wi <- descendMultiPop(Y, label.group, scaling.consts = lib.size.group,
-                             Z = batches, cl = cl)
-
-test.wi <- deTest(result.wi, unique(label.group), 
-                  Y, label.group, N.genes.null = nrow(Y) * 5,
-                  cl = cl)
 results <- list(result.wo = result.wo,
                result.wi = result.wi,
                test.wo = test.wo,
@@ -80,6 +74,7 @@ saveRDS(results, file = "descend_results_between_replicates.rds")
 
 
 ################## Differential testing between individuals ###################################
+set.seed(10)
 labels1 <- rep(0, length(labels))
 labels1[labels %in% levels(labels)[3:5]] <- "NA19101"
 labels1[labels %in% levels(labels)[6:8]] <- "NA19239"

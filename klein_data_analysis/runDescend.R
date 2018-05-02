@@ -25,17 +25,17 @@ saveRDS(result1, file = "descend_result_day0.rds")
 result2 <- runDescend(Y2, scaling.consts = colSums(Y2), cl = cl, 
                       control = list(max.sparse = c(0.95, 20)))
 
-saveRDS(result1, file = "descend_result_day2.rds")
+saveRDS(result2, file = "descend_result_day2.rds")
 
 result3 <- runDescend(Y4, scaling.consts = colSums(Y4), cl = cl, 
                       control = list(max.sparse = c(0.95, 20)))
 
-saveRDS(result1, file = "descend_result_day4.rds")
+saveRDS(result3, file = "descend_result_day4.rds")
 
 result4 <- runDescend(Y7, scaling.consts = colSums(Y7), cl = cl, 
                       control = list(max.sparse = c(0.95, 20)))
 
-saveRDS(result1, file = "descend_result_day7.rds")
+saveRDS(result4, file = "descend_result_day7.rds")
 
 library(reldist)
 metrics.dropseq <- lapply(list(Y0, Y2, Y4, Y7), function(Y) {
