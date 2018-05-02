@@ -202,7 +202,7 @@ PlotDownSample <- function(data, measure.name, col, logY = F, ylim = NULL,
     data[, -1] <- data[, -1] + data[, 1]
   temp.data <- reshape(data, varying = colnames(data), direction = "long", v.name = "value",
                        times = colnames(data), timevar = "Group")
-  temp.data$Method <- rep("True", nrow(temp.data))
+  temp.data$Method <- rep("True (original raw counts)", nrow(temp.data))
   temp.data$Method[grep("descend", temp.data$Group)] <- "DESCEND"
   temp.data$Method[grep("raw", temp.data$Group)] <- "Raw counts"
   temp.data$eff <- rep("True", nrow(temp.data))
