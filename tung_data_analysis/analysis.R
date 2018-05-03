@@ -21,7 +21,8 @@ text(sqrt(0.002), sqrt(0.27), "Between Batches", cex = 1.4, pos = 4)
 text(sqrt(0.002), sqrt(0.22), "(after correction)", cex = 1.3, pos = 4)
 
 par(mar = c(3, 3.5, 1, 1))
-plotGini(ests.wi.indiv, results.indiv$test.wi$p.values) 
+plotGini(ests.wi.indiv, results.indiv$test.wi$p.values,
+         xlab = "NA19101", ylab = "NA19239") 
 text(sqrt(0.002), sqrt(0.24), "Between\nIndividuals", cex = 1.4, pos = 4)
 
 
@@ -38,7 +39,8 @@ text(sqrt(0.005), sqrt(0.4), "(after correction)", cex = 1.3, pos = 4)
 
 par(mar = c(3, 3.5, 1, 1))
 #at.pt <- c(0.01, 0.1, 0.2)
-plotCV(ests.wi.indiv, results.indiv$test.wi$p.values, c(0.01, 0.5))
+plotCV(ests.wi.indiv, results.indiv$test.wi$p.values, c(0.01, 0.5),
+       xlab = "NA19101", ylab = "NA19239")
 text(sqrt(0.003), sqrt(0.4), "Between\nIndividuals", cex = 1.4, pos = 4)
 
 

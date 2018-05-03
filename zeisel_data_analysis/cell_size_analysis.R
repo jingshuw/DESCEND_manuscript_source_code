@@ -124,11 +124,12 @@ diff2<- all.results[[2]]$ests[common.genes26, 6] - all.results[[6]]$ests[common.
 
 ### Figure of DETest on nonzero fraction ###
 #pdf("~/Dropbox/sparse_factor_bic/notes/g_model/plots/zeisel_diff_new.pdf", width = 4.5, height = 4.5)
-idx <- sample(1:length(avg1), 1500)
+idx <- sample(1:length(diff1), 1500)
 require(scales)
-cols <- hue_pal()(3)
+cols <- hue_pal()(4)[c(2, 1, 4)]
+cols[1] <- hue_pal()(3)[2]
 par(mar = c(3, 4, 3, 1), mgp = c(2, 0.5, 0))
-plot(diff1[idx], diff2[idx], pch = 20, col = "gray",
+plot(diff1[idx], diff2[idx], pch = 18, col = "gray",
      xlab = "BEFORE cell size adjustment",
      ylab = "AFTER cell size adjustment",
      main = "Difference in Nonzero Fraction", cex.lab = 1.4, cex.main = 1.5,
@@ -136,14 +137,14 @@ plot(diff1[idx], diff2[idx], pch = 20, col = "gray",
 abline(a = 0, b= 1, lty= 2)
 idx1 <- intersect(names(which(diff.test$judge.comb[, 1])),  
                   names(which(!diff.test$judge.comb[, 2])))
-points(diff1[idx1], diff2[idx1], col = cols[3], pch = 20)
+points(diff1[idx1], diff2[idx1], col = cols[3], pch = 18)
 idx1 <- intersect(names(which(diff.test$judge.comb[, 1])),  
                   names(which(diff.test$judge.comb[, 2])))
-points(diff1[idx1], diff2[idx1], col = cols[1], pch = 20)
+points(diff1[idx1], diff2[idx1], col = cols[1], pch = 18)
 idx1 <- intersect(names(which(!diff.test$judge.comb[, 1])),  
                   names(which(diff.test$judge.comb[, 2])))
-points(diff1[idx1], diff2[idx1], col = cols[2], pch = 20)
-legend("topleft", bty = "n", pch = rep(20, 3), 
+points(diff1[idx1], diff2[idx1], col = cols[2], pch = 18, cex = 1.2)
+legend("topleft", bty = "n", pch = rep(18, 3), 
        col = cols[c(3, 2, 1)], pt.cex = 1.5,
        legend = c("Only before adjustment", "Only after adjustment",
                   "Significant for both"), cex = 1.15)
